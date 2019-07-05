@@ -1,0 +1,59 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/shop/shop",
+    "pages/kind/kind",
+    "pages/car/car",
+    "pages/my/my",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#50a7e4",
+    "navigationBarTitleText": "趣港货",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#41a5e5",
+    "fontSize": "28rpx",
+    "list": [
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "首页",
+        "iconPath": "pages/images/sy.png",
+        "selectedIconPath": "pages/images/sy_sel.jpg"        
+      },
+      {
+        "pagePath": "pages/kind/kind",
+        "text": "分类",
+        "iconPath": "pages/images/fl.jpg",
+        "selectedIconPath": "pages/images/fl_sel.jpg"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "购物车",
+        "iconPath": "pages/images/gw.jpg",
+        "selectedIconPath": "pages/images/gw_sel.jpg"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/images/wd.jpg",
+        "selectedIconPath": "pages/images/wd_sel.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}
