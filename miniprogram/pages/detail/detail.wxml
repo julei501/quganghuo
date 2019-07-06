@@ -8,7 +8,7 @@
 </swiper>
 <scroll-view scroll-y="true">
   <view class="detail">
-    <text class="title">LANCOME兰蔻小黑瓶精华肌底液</text>
+    <text class="title">兰蔻小黑瓶精华肌底液</text>
     <text class="price">￥500</text>
   </view>
   <view class="separate"></view>
