@@ -20,7 +20,7 @@
     <view class="specialPrice">
         <view class="title">今日特价</view>
         <block wx:for="{{goodsList}}">
-            <view class="goodsList">
+            <view class="goodsList" bindtap='detail' id='{{index}}'>
                 <image class="goodsPic" src='{{item.imgUrl}}' bindtap='goToDetail'></image>
                 <view class="goodsInfo">
                     <view class="goodsTitle ellipsis2">{{item.title}}</view>
@@ -28,7 +28,7 @@
                         <text class="fl newPrice">￥{{item.newPrice}}</text>
                         <text class="fl oldPrice">￥{{item.oldPrice}}</text>
                         <view>
-                            <image class="fr car1" src='../images/gw.jpg' bindtap='showCar' data-id="{{item.id}}"></image>
+                            <image class="fr car1" src='../images/gw.jpg'></image>
                         </view>
                     </view>
                 </view>
