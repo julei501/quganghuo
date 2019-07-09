@@ -241,7 +241,7 @@ text {
   
 /*加号和减号*/  
 .stepper text {  
-    width: 19px;  
+    width: 8px;  
     line-height: 26px;  
     text-align: center;  
     float: left;  

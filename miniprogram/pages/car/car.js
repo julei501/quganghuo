@@ -1,19 +1,48 @@
+const app = getApp()
 Page({
-  data: {
+  db: undefined,
+  data: { 
     // carts: [],               // 购物车列表
-    // hasList: false,          // 列表是否有数据
+    //hasList: true,          // 列表是否有数据
     totalPrice: 0,           // 总价，初始为0
     selectAllStatus: false  // 全选状态，默认全选
   },
 
+  /**
+  * 生命周期函数--监听页面加载
+  */
+  onLoad: function (options) {
+    var that = this
+    //  调用login云函数获取openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        wx.cloud.init({ env: 'minicloud' })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+
+  }, 
+
   onShow: function () {
     //  console.log(option.id);
     this.setData({
-      hasList: true,        // 既然有数据了，那设为true吧
-      carts: [
-        { id: 1, goods_name: '商品1', original_img: '../images/1.jpg', num: 4, shop_price: 62, selected: false },
-        { id: 2, goods_name: '商品2', original_img: '../images/2.jpg', num: 1, shop_price: 260, selected: false }
-      ]
+      //hasList: false,        // 既然有数据了，那设为true吧
+      //carts: [
+      //  { goods_id: 1, goods_name: '商品1', original_img: '../images/1.jpg', num: 4, shop_price: 62, //selected: false },
+       // { goods_id: 2, goods_name: '商品2', original_img: '../images/2.jpg', num: 1, shop_price: 260, //selected: false }
+      //]
+      totalPrice: 0,           // 总价，初始为0
+      selectAllStatus: false,  // 全选状态
+      carts: []
     });  
     var that = this;
     var goods_arr = wx.getStorageSync('goods_arr');//拿添加到购物车中商品的id数组 
@@ -25,7 +54,7 @@ Page({
       arr.push(subject);//通过push统一转移  
     }
     var post_id = arr.join();//将arr数组通过join方法转为字符串  
-    // console.log(post_id);
+    //console.log(post_id);
     if (post_id != "") {
       wx.request({
         url: "后台接口" + post_id,
@@ -36,7 +65,7 @@ Page({
           "Content-type": "json"
         },
         success: function (res) {
-          // console.log(res.data);
+          //console.log(res.data);
           var carts = res.data;
           var hasList;
           if (carts.length == 0) {
@@ -56,6 +85,33 @@ Page({
         }
       })
     }
+
+    //从云数据库读取购物车数据
+    // 1. 获取数据库引用
+    const db2 = wx.cloud.database()
+    // 2. 构造查询语句
+    // collection 方法获取一个集合的引用
+    // where 方法传入一个对象，数据库返回集合中字段等于指定值的 JSON 文档。API 也支持高级的查询条件（比如大于、小于、in 等），具体见文档查看支持列表
+    // get 方法会触发网络请求，往数据库取数据
+    db2.collection('userShops').where({
+      openid: app.globalData.openid
+    }).get({
+      success: function (res) {
+        if (res.data.length > 0){
+          that.setData({
+            carts: res.data,
+            hasList: true
+          })  
+        }else{
+          that.setData({
+            carts: res.data,
+            hasList: false
+          })  
+        } 
+        //console.log(carts.data)    
+      }
+    })   
+
   },
   getTotalPrice() {
     let carts = this.data.carts;                  // 获取购物车列表

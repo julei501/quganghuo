@@ -10,7 +10,9 @@
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/chooseLib/chooseLib",
+    "pages/main/main",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -31,7 +33,7 @@
         "selectedIconPath": "pages/images/sy_sel.jpg"        
       },
       {
-        "pagePath": "pages/kind/kind",
+        "pagePath": "pages/index/index",
         "text": "分类",
         "iconPath": "pages/images/fl.jpg",
         "selectedIconPath": "pages/images/fl_sel.jpg"
@@ -43,7 +45,7 @@
         "selectedIconPath": "pages/images/gw_sel.jpg"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/main/main",
         "text": "我的",
         "iconPath": "pages/images/wd.jpg",
         "selectedIconPath": "pages/images/wd_sel.png"
