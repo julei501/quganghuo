@@ -38,7 +38,7 @@ Page({
       //hasList: false,        // 既然有数据了，那设为true吧
       //carts: [
       //  { goods_id: 1, goods_name: '商品1', original_img: '../images/1.jpg', num: 4, shop_price: 62, //selected: false },
-       // { goods_id: 2, goods_name: '商品2', original_img: '../images/2.jpg', num: 1, shop_price: 260, //selected: false }
+       // { goods_id: 2, goods_name: '商品3', original_img: '../images/2.jpg', num: 1, shop_price: 260, //selected: false }
       //]
       totalPrice: 0,           // 总价，初始为0
       selectAllStatus: false,  // 全选状态
